@@ -2,6 +2,10 @@
 
 Um sistema leve de **Mediação** em .NET inspirado no padrão [Mediator](https://refactoring.guru/design-patterns/mediator), com suporte a múltiplos handlers para um único request.
 
+## 🛠 Requisitos
+
+- [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
+
 ## 📦 Estrutura do Projeto
 
 - **Mediator**: Implementação principal do mediator.
