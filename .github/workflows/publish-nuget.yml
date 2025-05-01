@@ -3,7 +3,7 @@ name: Publish NuGet Package
 on:
   push:
     tags:
-      - '*'
+      - '*'  # Dispara quando uma nova tag for criada (ex: v1.0.0)
 
 jobs:
   build:
@@ -21,7 +21,7 @@ jobs:
       - name: Get the latest Git tag
         id: git_tag
         run: |
-          VERSION=$(git describe --tags --abbrev=0)
+          VERSION=$(git describe --tags --abbrev=0 | sed 's/^v//')  # remove prefixo "v"
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Restore dependencies
@@ -30,8 +30,11 @@ jobs:
       - name: Build project
         run: dotnet build --configuration Release
 
-      - name: Pack the NuGet package
-        run: dotnet pack --configuration Release --output ./nupkgs /p:Version=$VERSION
+      - name: Pack Mediator.Abstractions
+        run: dotnet pack Mediator.Abstractions/Mediator.Abstractions.csproj --configuration Release --output ./nupkgs /p:Version=$VERSION
+
+      - name: Pack Mediator
+        run: dotnet pack Mediator/Mediator.csproj --configuration Release --output ./nupkgs /p:Version=$VERSION
 
       - name: Publish to NuGet
         run: |
