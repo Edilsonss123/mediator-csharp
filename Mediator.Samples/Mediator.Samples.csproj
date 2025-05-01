@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\src\Mediator.Abstractions\Mediator.Abstractions.csproj" />
-    <ProjectReference Include="..\src\Mediator\Mediator.csproj" />
+    <PackageReference Include="Mediator-csharp-edilsonss123" Version="1.1.0" />
   </ItemGroup>
 
   <ItemGroup>
