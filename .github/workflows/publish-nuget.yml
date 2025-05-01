@@ -3,7 +3,7 @@ name: Publish NuGet Package
 on:
   push:
     tags:
-      - 'v*'  # Isso irá disparar o workflow quando uma tag que comece com "v" for criada, como "v1.0.0".
+      - '*'
 
 jobs:
   build:
