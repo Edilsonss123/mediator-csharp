@@ -36,8 +36,8 @@ jobs:
       - name: Pack Mediator
         run: dotnet pack Mediator/Mediator.csproj --configuration Release --output ./nupkgs /p:Version=$VERSION
 
-      - name: Pack Mediator.Sample
-        run: dotnet pack Mediator.Sample/Mediator.Sample.csproj --configuration Release --output ./nupkgs /p:Version=$VERSION
+      - name: Pack Mediator.Samples
+        run: dotnet pack Mediator.Samples/Mediator.Samples.csproj --configuration Release --output ./nupkgs /p:Version=$VERSION
 
       - name: Publish to NuGet
         run: |
