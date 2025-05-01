@@ -1,11 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <PackageId>Mediator-csharp-edilsonss123</PackageId>
+    <Version>$(GitVersion)</Version>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
+  <Target Name="GitVersion" BeforeTargets="Build">
+    <Exec Command="git describe --tags --abbrev=0" Outputs="%(GitVersionOutput.Identity)">
+      <Output TaskParameter="ConsoleOutput" ItemName="GitVersionOutput"/>
+    </Exec>
+    <PropertyGroup>
+      <GitVersion>$(GitVersionOutput)</GitVersion>
+    </PropertyGroup>
+  </Target>
+  
   <ItemGroup>
     <ProjectReference Include="..\Mediator.Abstractions\Mediator.Abstractions.csproj" />
   </ItemGroup>

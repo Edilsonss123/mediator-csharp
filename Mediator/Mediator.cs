@@ -28,7 +28,7 @@ namespace Mediator
             {
                 var method = handlerInterfaceType.GetMethod("HandleAsync");
                 if (method is null)
-                    throw new InvalidOperationException($"HandleAsync method not found for {handler.GetType()}");
+                    throw new InvalidOperationException($"HandleAsync method not found for {handler!.GetType()}");
 
                 var result = method.Invoke(handler, new object[] { request, cancellationToken });
                 if (result is not Task<TResponse> task)
