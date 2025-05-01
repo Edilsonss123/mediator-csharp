@@ -36,6 +36,9 @@ jobs:
       - name: Pack Mediator
         run: dotnet pack Mediator/Mediator.csproj --configuration Release --output ./nupkgs /p:Version=$VERSION
 
+      - name: Pack Mediator.Sample
+        run: dotnet pack Mediator.Sample/Mediator.Sample.csproj --configuration Release --output ./nupkgs /p:Version=$VERSION
+
       - name: Publish to NuGet
         run: |
           dotnet nuget push ./nupkgs/*.nupkg --api-key ${{ secrets.MEDIADOR_CSHARP_NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
