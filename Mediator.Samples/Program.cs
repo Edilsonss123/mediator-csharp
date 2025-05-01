@@ -38,7 +38,7 @@ public class CreateAccountHandler(AccountRepository accountRepository) : IHandle
     }
 }
 
-public class NotifyCreateAccountHandler(AccountRepository accountRepository) : IHandler<CreateAccountCommand, string>
+public class NotifyCreateAccountHandler() : IHandler<CreateAccountCommand, string>
 {
     public Task<string> HandleAsync(CreateAccountCommand request, CancellationToken cancellationToken)
     {

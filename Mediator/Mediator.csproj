@@ -7,15 +7,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-  <Target Name="GitVersion" BeforeTargets="Build">
-    <Exec Command="git describe --tags --abbrev=0" Outputs="%(GitVersionOutput.Identity)">
-      <Output TaskParameter="ConsoleOutput" ItemName="GitVersionOutput"/>
-    </Exec>
-    <PropertyGroup>
-      <GitVersion>$(GitVersionOutput)</GitVersion>
-    </PropertyGroup>
-  </Target>
-  
   <ItemGroup>
     <ProjectReference Include="..\Mediator.Abstractions\Mediator.Abstractions.csproj" />
   </ItemGroup>

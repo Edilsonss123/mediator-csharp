@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <PackageId>Mediator.Abstractions-csharp-edilsonss123</PackageId>
-    <Version>1.0.0</Version>
+    <Version>$(GitVersion)</Version>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>

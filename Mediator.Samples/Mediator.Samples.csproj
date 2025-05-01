@@ -10,6 +10,8 @@
   </ItemGroup>
 
   <PropertyGroup>
+    <PackageId>Mediator.Samples</PackageId>
+    <Version>$(GitVersion)</Version>
     <OutputType>Exe</OutputType>
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
