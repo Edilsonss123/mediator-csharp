@@ -1,20 +1,15 @@
+
 # Mediator
 
-Um sistema leve de **Mediator** em .NET inspirado no padrão [Mediator](https://refactoring.guru/design-patterns/mediator), com suporte a múltiplos handlers para um único request.
+Uma implementação leve de **Mediator** em .NET, inspirada no padrão [Mediator](https://refactoring.guru/design-patterns/mediator), permitindo o uso de múltiplos handlers para um único request, que implementa Mediator-csharp-edilsonss123
 
 ## 🛠 Requisitos
 
 - [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
 
-## 📦 Estrutura do Projeto
-
-- **src/Mediator**: Implementação principal do mediator.
-- **src/Mediator.Abstractions**: Interfaces e contratos (como `IMediator`, `IRequest<>`, `IHandler<,>`).
-- **Mediator.Samples**: Exemplo de uso prático, incluindo registro via DI, envio de comandos e múltiplos handlers.
-
 ## 📦 Instalação
 
-### Instalar implementação completa:
+### Instalar a implementação completa:
 ```bash
 dotnet add package Mediator-csharp-edilsonss123 --version 1.0.9
 ```
@@ -22,22 +17,11 @@ Ou via NuGet:
 ```bash
 nuget install Mediator-csharp-edilsonss123 -Version 1.0.9
 ```
-
-### Instalar apenas as abstrações (útil apenas se for consumir sem implementar):
-```bash
-dotnet add package Mediator.Abstractions-csharp-edilsonss123 --version 1.0.9
-```
-Ou via NuGet:
-```bash
-nuget install Mediator-csharp-edilsonss123 -Version 1.0.9
-```
-> ⚠️ O pacote `Mediator-csharp-edilsonss123` **já inclui as abstrações**, você só precisa do pacote separado se estiver apenas **definindo contratos** em outra solução.
-
 ## 🚀 Como Usar
 
 ### 1. Registrar o Mediator
 
-
+Adicione o Mediator no seu `Startup.cs` ou `Program.cs`:
 ```csharp
 using Mediator.Extensions;
 using System.Reflection;
@@ -45,10 +29,9 @@ using System.Reflection;
 services.AddMediator(Assembly.GetExecutingAssembly());
 ```
 
-Esse método registra automaticamente todos os handlers que implementam `IHandler<TRequest, TResponse>` encontrados nos assemblies especificados.
-
 ### 2. Enviar uma Requisição
 
+Crie um comando e envie uma requisição:
 ```csharp
 var mediator = serviceProvider.GetRequiredService<IMediator>();
 
@@ -56,10 +39,9 @@ var request = new CreateAccountCommand { UserName = "testuser", Password = "test
 var result = await mediator.SendAsync(request);
 ```
 
-Todos os handlers registrados para o tipo de requisição serão executados, e seus resultados retornados como uma `List<TResponse>`.
+### Exemplo Completo
 
-## 🧩 Exemplo Completo
-
+Defina o comando e os handlers:
 ```csharp
 public class CreateAccountCommand : IRequest<string>
 {
@@ -71,7 +53,6 @@ public class CreateAccountHandler : IHandler<CreateAccountCommand, string>
 {
     public Task<string> HandleAsync(CreateAccountCommand request, CancellationToken cancellationToken)
     {
-        // lógica para criar conta
         return Task.FromResult($"{request.UserName} account created");
     }
 }
@@ -80,14 +61,12 @@ public class NotifyCreateAccountHandler : IHandler<CreateAccountCommand, string>
 {
     public Task<string> HandleAsync(CreateAccountCommand request, CancellationToken cancellationToken)
     {
-        // lógica de notificação
         return Task.FromResult("Notification sent");
     }
 }
 ```
 
-### Resultado esperado
-
+Resultado esperado:
 ```bash
 AccountRepository.Save()
 testuser account created
@@ -113,6 +92,6 @@ public interface IMediator
 
 ## 📚 Recursos
 
-- Suporte a múltiplos handlers por requisição
-- Registro automático via reflection com DI
-- Design simples, sem dependência de bibliotecas externas
+- Suporte a múltiplos handlers por requisição.
+- Registro automático via reflection com DI.
+- Design simples, sem dependência de bibliotecas externas.

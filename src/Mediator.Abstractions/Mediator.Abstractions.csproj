@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>Mediator.Abstractions-csharp-edilsonss123</PackageId>
+    <Version>$(GitVersion)</Version>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+
+    <Authors>Edilson</Authors>
+    <Description>Uma implementação leve de Mediator em .NET</Description>
+    <PackageTags>mediator, pattern</PackageTags>
+
+    <RepositoryUrl>https://github.com/edilsonss123/Mediator-csharp-edilsonss123</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+</Project>

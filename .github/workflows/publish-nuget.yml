@@ -31,13 +31,10 @@ jobs:
         run: dotnet build --configuration Release
 
       - name: Pack Mediator.Abstractions
-        run: dotnet pack Mediator.Abstractions/Mediator.Abstractions.csproj --configuration Release --output ./nupkgs /p:Version=$VERSION
+        run: dotnet pack src/Mediator.Abstractions/Mediator.Abstractions.csproj --configuration Release --output ./nupkgs /p:Version=$VERSION
 
       - name: Pack Mediator
-        run: dotnet pack Mediator/Mediator.csproj --configuration Release --output ./nupkgs /p:Version=$VERSION
-
-      - name: Pack Mediator.Samples
-        run: dotnet pack Mediator.Samples/Mediator.Samples.csproj --configuration Release --output ./nupkgs /p:Version=$VERSION
+        run: dotnet pack src/Mediator/Mediator.csproj --configuration Release --output ./nupkgs /p:Version=$VERSION
 
       - name: Publish to NuGet
         run: |
