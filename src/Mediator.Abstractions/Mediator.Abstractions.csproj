@@ -9,7 +9,7 @@
     <Description>Uma implementação leve de Mediator em .NET</Description>
     <PackageTags>mediator, pattern</PackageTags>
 
-    <RepositoryUrl>https://github.com/edilsonss123/Mediator-csharp-edilsonss123</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Edilsonss123/mediator-csharp</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     
     <TargetFramework>net9.0</TargetFramework>
